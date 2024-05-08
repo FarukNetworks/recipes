@@ -3,31 +3,72 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --containerPadding: 50px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: #fff;
+  background: #303030;
+  font-size: 18px;
 }
+
+.container {
+  padding-left: var(--containerPadding);
+  padding-right: var(--containerPadding);
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#search-banner {
+  background-image: url(../public/Search.png);
+  background-size: contain;
+  background-position: left center;
+}
+
+
+.baseTransition {
+  transition: all .3s ease-in-out;
+}
+
+.bg-teal {
+ background-color: #CBE6EE;
+}
+
+.text-teal {
+  color: #CBE6EE;
+}
+
+.logoStyles {
+  font-size: 2.5rem;
+  color: transparent;
+  -webkit-text-stroke: 2px;
+  -webkit-text-stroke-color: #fff;
+  text-shadow: -7px 7px black;
+}
+
+.bg-black-20 {
+  background-color: rgba(0, 0, 0, 0.20);
+}
+
+.baseExcerpt {
+  height: 85px;
+  overflow: hidden;
+  position: relative;
+}
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono
+  }
+
+  body {
+    @apply font-sans
   }
 }
