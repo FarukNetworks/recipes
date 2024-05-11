@@ -116,8 +116,8 @@ export default function Home() {
           className="h-[50vh] object-cover min-h-[300px]"
         />
         <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute right-0 -bottom-20 bg-teal gsapSlideCard">
-          <p className="text-black mb-2">WELCOME TO RECIPES</p>
-          <h1 className="text-black text-5xl mb-5">Find Your Recipe</h1>
+          <p className="text-black text-sm md:text-[18px] mb-2">WELCOME TO RECIPES</p>
+          <h1 className="text-black text-3xl md:text-5xl mb-5">Find Your Recipe</h1>
           <button>
               <Link href="/recipes" className='flex gap-5 text-black items-center baseTransition hover:opacity-70 group'>
                 Recipes
@@ -141,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container pt-72">
+      <section className="container pt-40 md:pt-72">
         <div
           ref={recipeCard}
           className="grid grid-cols-1 md:grid-cols-3 gap-10"
@@ -331,8 +331,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container py-36" ref={sectionLeftRight}>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-32 items-center">
+      <section className="container py-20 md:py-36" ref={sectionLeftRight}>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-20 md:gap-32 items-center">
           <div>
             <h2 className="text-5xl mb-7">Have a Great Recipe? </h2>
             <p className="mb-8">
@@ -365,8 +365,8 @@ export default function Home() {
           className="object-cover h-full max-h-[70vh] min-h-[300px]"
         />
         <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute left-0 bottom-12 bg-red-100">
-          <p className="text-black mb-2">BIRTHDAY</p>
-          <h2 className="text-black text-5xl">The Perfect Desert</h2>
+          <p className="text-black text-sm md:text-[18px] mb-2">BIRTHDAY</p>
+          <h2 className="text-black text-3xl md:text-5xl">The Perfect Desert</h2>
         </div>
       </section>
 
@@ -379,8 +379,8 @@ export default function Home() {
           className="object-cover h-full max-h-[70vh] min-h-[300px]"
         />
         <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute right-0 bottom-12 bg-red-100">
-          <p className="text-black mb-2">MEXICAN</p>
-          <h2 className="text-black text-5xl">Loaded Veggie Nachos</h2>
+          <p className="text-black text-sm md:text-[18px] mb-2">MEXICAN</p>
+          <h2 className="text-black text-3xl md:text-5xl">Loaded Veggie Nachos</h2>
         </div>
       </section>
 

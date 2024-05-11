@@ -6,10 +6,23 @@
   --containerPadding: 50px;
 }
 
+#search-banner {
+  background-image: url(../public/Search.png);
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+
 @media screen and (max-width: 767px) {
   :root {
     --containerPadding: 25px;
   }
+
+  #search-banner {
+    background-image: none;
+  }
+  
 }
 
 
@@ -24,14 +37,6 @@ body {
   padding-right: var(--containerPadding);
   width: 100% !important;
   max-width: 100% !important;
-}
-
-
-#search-banner {
-  background-image: url(../public/Search.png);
-  background-size: contain;
-  background-position: left center;
-  background-repeat: no-repeat;
 }
 
 

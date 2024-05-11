@@ -67,7 +67,7 @@ isDataVisible = true;
         </button>
       </form>
       {isDataVisible && (
-        <div className="grid grid-cols-1 gap-10 absolute bg-[#3d3d3d] left-[50%] -translate-x-1/2 shadow-xl z-50 max-w-xl p-5 mx-auto mt-10">
+        <div className="grid grid-cols-1 gap-10 absolute bg-[#3d3d3d] left-[50%] -translate-x-1/2 shadow-xl z-50 max-w-xl w-full p-5 mx-auto mt-5">
          {searchItems.length > 0 ? (
       searchItems.map(item => (
           <div key={item.id} className="flex items-center justify-center gap-5">
