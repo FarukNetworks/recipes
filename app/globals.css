@@ -6,6 +6,11 @@
   --containerPadding: 50px;
 }
 
+@media screen and (max-width: 767px) {
+  :root {
+    --containerPadding: 25px;
+  }
+}
 
 
 body {
@@ -21,10 +26,12 @@ body {
   max-width: 100% !important;
 }
 
+
 #search-banner {
   background-image: url(../public/Search.png);
   background-size: contain;
   background-position: left center;
+  background-repeat: no-repeat;
 }
 
 
@@ -56,6 +63,25 @@ body {
   height: 85px;
   overflow: hidden;
   position: relative;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+ul li {
+  margin-bottom: 5px;
+}
+
+.editor h1,
+.editor h2,
+.editor h3,
+.editor h4,
+.editor h5,
+.editor p {
+  margin-bottom: 15px;
 }
 
 

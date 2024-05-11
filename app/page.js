@@ -1,14 +1,113 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchInput from './components/SearchInput';
 import Button from './components/Button';
 import LastSection from './components/LastSection';
 import Copyright from './components/Copyright';
+import { useRef } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 export default function Home() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const heroSection = useRef();
+  const recipeCard = useRef();
+  const sectionLeftRight = useRef();
+  const imageSection2 = useRef();
+  const imageSection3 = useRef();
+  
+  
+
+
+
+  useGSAP(() => {
+    gsap.from(heroSection.current, {
+      opacity: 0,
+      scale: 0,
+    });
+
+    gsap.from(recipeCard.current.children, {
+      scrollTrigger: recipeCard.current,
+      opacity: 0,
+      yPercent: 50,
+      stagger: 0.3,
+      duration: 1, 
+      ease: 'power4.inOut'
+    });
+
+    gsap.from('.gsapSlideCard', {
+      xPercent: () => innerWidth,
+      duration: 1, 
+      ease: 'power4.inOut'
+    })
+    
+    
+    gsap.from(sectionLeftRight.current.children[0].children[0], {
+      scrollTrigger: {
+        trigger: sectionLeftRight.current,
+        start: 'center bottom',
+      },
+      opacity: 0, 
+      xPercent: -50,
+    })
+
+    gsap.from(sectionLeftRight.current.children[0].children[1], {
+      scrollTrigger: {
+        trigger: sectionLeftRight.current,
+        start: 'center bottom',
+      },
+      opacity: 0, 
+      xPercent: 50,
+    })
+
+    gsap.from(imageSection2.current.children[0], {
+      scrollTrigger: imageSection2.current,
+      opacity: 0,
+      scale: 0,
+    });
+
+    gsap.from(imageSection2.current.children[1], {
+      scrollTrigger: imageSection2.current.children[1],
+      opacity: 0,
+      xPercent: -innerWidth,
+      duration: 1, 
+      ease: 'power4.inOut'
+    });
+
+    gsap.from(imageSection3.current.children[0], {
+      scrollTrigger: imageSection3.current,
+      opacity: 0,
+      scale: 0,
+    });
+
+    gsap.from(imageSection3.current.children[1], {
+      scrollTrigger: imageSection3.current.children[1],
+      opacity: 0,
+      xPercent: innerWidth,
+      duration: 1, 
+      ease: 'power4.inOut'
+    });
+
+    gsap.from('#search-banner', {
+      scrollTrigger: '#search-banner', 
+      opacity: 0,
+      duration: 1, 
+      ease: 'power4.inOut'
+    })
+
+    gsap.from('#lastSection', {
+      scrollTrigger: '#lastSection', 
+      opacity: 0, 
+      duration: 1, 
+      ease: 'power4.inOut'
+    })
+  });
   return (
     <main>
-       <section className="container pt-5 relative">
+      <section ref={heroSection} className="container pt-5 relative">
         <Image
           src="/recepies-find-your-recepie.webp"
           width="1906"
@@ -16,14 +115,37 @@ export default function Home() {
           alt="Find Your Recipe"
           className="h-[50vh] object-cover min-h-[300px]"
         />
-        <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute right-0 -bottom-20 bg-teal">
+        <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute right-0 -bottom-20 bg-teal gsapSlideCard">
           <p className="text-black mb-2">WELCOME TO RECIPES</p>
-          <h1 className="text-black text-5xl">Find Your Recipe</h1>
+          <h1 className="text-black text-5xl mb-5">Find Your Recipe</h1>
+          <button>
+              <Link href="/recipes" className='flex gap-5 text-black items-center baseTransition hover:opacity-70 group'>
+                Recipes
+                <svg
+                className="group-hover:ml-2 baseTransition"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M15.3661 5.36611C15.8542 4.87796 16.6457 4.87796 17.1339 5.36611L25.8839 14.1161C26.372 14.6043 26.372 15.3958 25.8839 15.8839L17.1339 24.6339C16.6457 25.122 15.8542 25.122 15.3661 24.6339C14.878 24.1458 14.878 23.3543 15.3661 22.8661L21.9822 16.25H5C4.30965 16.25 3.75 15.6904 3.75 15C3.75 14.3096 4.30965 13.75 5 13.75H21.9822L15.3661 7.13389C14.878 6.64573 14.878 5.85428 15.3661 5.36611Z"
+                    fill="#000"
+                  />
+                </svg>
+              </Link>
+            </button>
         </div>
       </section>
 
       <section className="container pt-72">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div
+          ref={recipeCard}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10"
+        >
           <div>
             <Link href="#">
               <Image
@@ -209,54 +331,75 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container py-36">
+      <section className="container py-36" ref={sectionLeftRight}>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-32 items-center">
           <div>
-            <h2 className='text-5xl mb-7'>Have a Great Recipe? </h2>
+            <h2 className="text-5xl mb-7">Have a Great Recipe? </h2>
             <p className="mb-8">
-            Share it with our community of food enthusiasts! Join us to
-            showcase your culinary creations, discover new recipes, and
-            connect with fellow foodies. Whether it&apos;s a family favorite, a
-            twist on a classic dish, or a completely original creation,
-            inspire others with your cooking skills!
-          </p>
-            <Button link="#" text="Create Recipe Now" />
+              Share it with our community of food enthusiasts! Join us to
+              showcase your culinary creations, discover new recipes, and
+              connect with fellow foodies. Whether it&apos;s a family favorite,
+              a twist on a classic dish, or a completely original creation,
+              inspire others with your cooking skills!
+            </p>
+            <Button link="/new-recipe" text="Create Recipe Now" />
           </div>
 
           <div>
-            <Image src="/how-it-works-2.png" alt="Create a Recipe" width="750" height="741" />
+            <Image
+              src="/how-it-works-2.png"
+              alt="Create a Recipe"
+              width="750"
+              height="741"
+            />
           </div>
         </div>
       </section>
 
-      <section className='container pb-36 relative'>
-        <Image src="/recepies-birthday-desert.jpg" alt='Birthday Desert' width="2000" height="667" className='object-cover h-full max-h-[70vh] min-h-[300px]' />
+      <section className="container pb-36 relative" ref={imageSection2}>
+        <Image
+          src="/recepies-birthday-desert.jpg"
+          alt="Birthday Desert"
+          width="2000"
+          height="667"
+          className="object-cover h-full max-h-[70vh] min-h-[300px]"
+        />
         <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute left-0 bottom-12 bg-red-100">
           <p className="text-black mb-2">BIRTHDAY</p>
           <h2 className="text-black text-5xl">The Perfect Desert</h2>
         </div>
       </section>
 
-      <section className='container pb-36 pt-10 relative'>
-        <Image src="/recepies-nachos.jpg" alt='Birthday Desert' width="2000" height="667" className='object-cover h-full max-h-[70vh] min-h-[300px]' />
+      <section className="container pb-36 pt-10 relative" ref={imageSection3}>
+        <Image
+          src="/recepies-nachos.jpg"
+          alt="Birthday Desert"
+          width="2000"
+          height="667"
+          className="object-cover h-full max-h-[70vh] min-h-[300px]"
+        />
         <div className="px-[25px] py-[45px] md:px-[50px] md:py-[70px] w-full max-w-2xl absolute right-0 bottom-12 bg-red-100">
           <p className="text-black mb-2">MEXICAN</p>
           <h2 className="text-black text-5xl">Loaded Veggie Nachos</h2>
         </div>
       </section>
 
-      <section id='search-banner' className="py-24 container">
+      <section id="search-banner" className="py-24 container">
         <div>
-          <h2 className='text-5xl mb-5 text-center'>Looking for Specific Recipe?</h2>
-          <p className='text-center'>Type the food into the search field below</p>
-          <div className='flex items-center justify-center mt-8 max-w-xs mx-auto'>
+          <h2 className="text-5xl mb-5 text-center">
+            Looking for Specific Recipe?
+          </h2>
+          <p className="text-center">
+            Type the food into the search field below
+          </p>
+          <div className="flex items-center justify-center mt-8 max-w-xs mx-auto">
             <SearchInput />
           </div>
         </div>
       </section>
 
       <section>
-      <LastSection />
+        <LastSection />
       </section>
       <Copyright />
     </main>
