@@ -9,6 +9,11 @@ import { useRef } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
+
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
