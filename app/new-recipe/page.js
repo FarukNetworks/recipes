@@ -11,10 +11,15 @@ import 'react-quill/dist/quill.snow.css';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
+
 
 
 
 const NewRecipe = () => {
+
+  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
 
   const router = useRouter();
 
